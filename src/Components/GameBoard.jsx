@@ -1,23 +1,31 @@
 import React, { useState } from "react";
 import "./styles/game-board.css";
- 
-export const GameBoard = ({correctCount, updateCorrectCount, incorrectCount, updateIncorrectCount, answersLeft, updateAnswersLeft, initialFishes}) => {
-  const [nextFishToName, setNextFishToName] = useState(initialFishes[0]);
+
+export const GameBoard = ({
+  correctCount,
+  updateCorrectCount,
+  incorrectCount,
+  updateIncorrectCount,
+  answersLeft,
+  updateAnswersLeft,
+  initialFishes,
+}) => {
+  const [nextFishIndex, setNextFishIndex] = useState(0);
+  const nextFishToName = initialFishes[nextFishIndex];
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const userInput = e.target.elements["fish-guess"].value;
-    if (userInput === nextFishToName.name) {
+    const isGuessCorrect = userInput === nextFishToName.name;
+
+    if (isGuessCorrect) {
       updateCorrectCount(correctCount + 1);
     } else {
       updateIncorrectCount(incorrectCount + 1);
     }
+
     updateAnswersLeft(answersLeft.filter((answer) => answer !== nextFishToName.name));
-    const currentIndex = initialFishes.findIndex(
-      (fish) => fish.name === nextFishToName.name
-    );
-    const nextIndex = (currentIndex + 1) % initialFishes.length;
-    setNextFishToName(initialFishes[nextIndex]);
+    setNextFishIndex((nextFishIndex + 1) % initialFishes.length);
     e.target.reset();
   };
 

@@ -7,22 +7,10 @@ import "./Components/styles/final-score.css";
 import { Images } from "./assets/images";
  
 const initialFishes = [
-  {
-    name: "trout",
-    url: Images.trout,
-  },
-  {
-    name: "salmon",
-    url: Images.salmon,
-  },
-  {
-    name: "tuna",
-    url: Images.tuna,
-  },
-  {
-    name: "shark",
-    url: Images.shark,
-  },
+  { name: "trout", url: Images.trout },
+  { name: "salmon", url: Images.salmon },
+  { name: "tuna", url: Images.tuna },
+  { name: "shark", url: Images.shark },
 ];
 function App() {
   const [gameOver, setGameOver] = useState(false);

@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles/score-board.css";
-
+ 
 export const ScoreBoard = ({ correctCount, answersLeft, incorrectCount }) => {
   return (
     <div id="score-board">

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./styles/game-board.css";
-
-export const GameBoard = ({correctCount, updateCorrectCount, incorrectCount, updateIncorrectCount,answersLeft,updateAnswersLeft, initialFishes}) => {
+ 
+export const GameBoard = ({correctCount, updateCorrectCount, incorrectCount, updateIncorrectCount, answersLeft, updateAnswersLeft, initialFishes}) => {
   const [nextFishToName, setNextFishToName] = useState(initialFishes[0]);
 
   const handleSubmit = (e) => {

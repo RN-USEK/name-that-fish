@@ -5,7 +5,7 @@ import { ScoreBoard } from "./Components/ScoreBoard";
 import { FinalScore } from "./Components/FinalScore";
 import "./Components/styles/final-score.css";
 import { Images } from "./assets/images";
-
+ 
 const initialFishes = [
   {
     name: "trout",
@@ -44,23 +44,35 @@ function App() {
   };
   const updateAnswersLeft = (newValue) => {
     setAnswersLeft(newValue);
+    if (newValue.length === 0) {
+      setGameOver(true);
+    }
   };
 
   return (
     <div>
       {!gameOver ? (
         <>
-          <ScoreBoard correctCount={correctCount} answersLeft={answersLeft} incorrectCount={incorrectCount} />
-          <GameBoard onGameEnd={handleGameEnd} 
-                    updateCorrectCount={updateCorrectCount} 
-                    incorrectCount={incorrectCount} 
-                    updateIncorrectCount={updateIncorrectCount}
-                    answersLeft={answersLeft}
-                    updateAnswersLeft={updateAnswersLeft}
-                    initialFishes={initialFishes}/>
+          <ScoreBoard 
+            correctCount={correctCount} 
+            answersLeft={answersLeft} 
+            incorrectCount={incorrectCount} 
+          />
+          <GameBoard  
+            onGameEnd={handleGameEnd} 
+            correctCount={correctCount}
+            updateCorrectCount={updateCorrectCount} 
+            incorrectCount={incorrectCount} 
+            updateIncorrectCount={updateIncorrectCount}
+            answersLeft={answersLeft}
+            updateAnswersLeft={updateAnswersLeft}
+            initialFishes={initialFishes}
+          />
         </>
       ) : (
-        <FinalScore correctCount={correctCount} />
+        <FinalScore 
+          correctCount={correctCount} 
+          totalCount={initialFishes.length} />
       )}
     </div>
   );

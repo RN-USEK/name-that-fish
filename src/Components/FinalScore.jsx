@@ -1,13 +1,11 @@
-const correctCount = 0;
-const totalCount = 0;
-export const FinalScore = () => (
-  <div id="final-score">
-    <h1>Your Final Score Was</h1>
-    <div id="score">
-      <p>{correctCount}</p>
-      <hr />
-      <p>{totalCount}</p>
+import React from "react";
+import "./styles/final-score.css";
+
+export const FinalScore = ({ correctCount }) => {
+  return (
+    <div id="final-score">
+      <h2>Final Score</h2>
+      <div>Correct Answers: {correctCount}</div>
     </div>
-  </div>
-);
- 
+  );
+};

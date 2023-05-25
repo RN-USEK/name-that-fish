@@ -1,8 +1,7 @@
 import React from "react";
 import "./styles/final-score.css";
  
-export const FinalScore = ({ correctCount, totalCount }) => {
-  return (
+export const FinalScore = ({ correctCount, totalCount }) => (
     <div id="final-score">
     <h1>Your Final Score Was</h1>
     <div id="score">
@@ -11,4 +10,4 @@ export const FinalScore = ({ correctCount, totalCount }) => {
       <p>{totalCount}</p>
     </div>
   </div>
-)}
+)

@@ -13,33 +13,27 @@ const initialFishes = [
   { name: "shark", url: Images.shark },
 ];
 function App() {
-  const [gameOver, setGameOver] = useState(false);
+  const [currentItem, setCurrentItem] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
   const [answersLeft, setAnswersLeft] = useState(initialFishes.map((fish) => fish.name));
   const [incorrectCount, setIncorrectCount] = useState(0);
 
-  const handleGameEnd = (correctAnswers, remainingAnswers) => {
-    setCorrectCount(correctAnswers);
-    setAnswersLeft(remainingAnswers);
-    setGameOver(true);
-  };
+  
 
+  const isGameOver = currentItem === initialFishes.length;
+ 
   const updateCorrectCount = (newValue) => {
+    setAnswersLeft(initialFishes.slice(currentItem+1).map((fish) => fish.name));
     setCorrectCount(newValue);
   };
   const updateIncorrectCount = (newValue) => {
+    setAnswersLeft(initialFishes.slice(currentItem+1).map((fish) => fish.name));
     setIncorrectCount(newValue);
-  };
-  const updateAnswersLeft = (newValue) => {
-    setAnswersLeft(newValue);
-    if (newValue.length === 0) {
-      setGameOver(true);
-    }
   };
 
   return (
     <div>
-      {!gameOver ? (
+      {!isGameOver ? (
         <>
           <ScoreBoard 
             correctCount={correctCount} 
@@ -47,14 +41,13 @@ function App() {
             incorrectCount={incorrectCount} 
           />
           <GameBoard  
-            onGameEnd={handleGameEnd} 
             correctCount={correctCount}
             updateCorrectCount={updateCorrectCount} 
             incorrectCount={incorrectCount} 
             updateIncorrectCount={updateIncorrectCount}
-            answersLeft={answersLeft}
-            updateAnswersLeft={updateAnswersLeft}
-            initialFishes={initialFishes}
+            currentItem={currentItem}
+            setCurrentItem={setCurrentItem}
+            currentFish={initialFishes[currentItem]}
           />
         </>
       ) : (

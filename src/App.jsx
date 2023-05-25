@@ -18,8 +18,6 @@ function App() {
   const [answersLeft, setAnswersLeft] = useState(initialFishes.map((fish) => fish.name));
   const [incorrectCount, setIncorrectCount] = useState(0);
 
-  
-
   const isGameOver = currentItem === initialFishes.length;
  
   const updateCorrectCount = (newValue) => {

@@ -2,7 +2,6 @@ import React from "react";
 import "./styles/score-board.css";
 
 export const ScoreBoard = ({ correctCount, answersLeft, incorrectCount }) => (
-
   <div id="score-board">
         <div>Incorrect 🔻: {incorrectCount}</div>
         <div id="choices-left">

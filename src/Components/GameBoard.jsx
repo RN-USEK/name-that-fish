@@ -26,7 +26,7 @@ export const GameBoard = ({
     }
 
     setCurrentItem (currentItem + 1);
-   setGuess('');
+    setGuess('');
   };
 
   return (

@@ -15,20 +15,9 @@ const initialFishes = [
 function App() {
   const [currentItem, setCurrentItem] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
-  const [answersLeft, setAnswersLeft] = useState(initialFishes.map((fish) => fish.name));
   const [incorrectCount, setIncorrectCount] = useState(0);
-
   const isGameOver = currentItem === initialFishes.length;
- 
-  const updateCorrectCount = (newValue) => {
-    setAnswersLeft(initialFishes.slice(currentItem+1).map((fish) => fish.name));
-    setCorrectCount(newValue);
-  };
-  const updateIncorrectCount = (newValue) => {
-    setAnswersLeft(initialFishes.slice(currentItem+1).map((fish) => fish.name));
-    setIncorrectCount(newValue);
-  };
-
+  const answersLeft = initialFishes.slice(currentItem).map((fish) => fish.name);
   return (
     <div>
       {!isGameOver ? (
@@ -40,9 +29,9 @@ function App() {
           />
           <GameBoard  
             correctCount={correctCount}
-            updateCorrectCount={updateCorrectCount} 
+            updateCorrectCount={setCorrectCount} 
             incorrectCount={incorrectCount} 
-            updateIncorrectCount={updateIncorrectCount}
+            updateIncorrectCount={setIncorrectCount}
             currentItem={currentItem}
             setCurrentItem={setCurrentItem}
             currentFish={initialFishes[currentItem]}

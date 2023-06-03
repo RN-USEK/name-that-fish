@@ -1,8 +1,13 @@
 import React from "react";
 import "./styles/score-board.css";
+import { useFishContext } from '../context/FishContext';
 
-export const ScoreBoard = ({ correctCount, answersLeft, incorrectCount }) => (
-  <div id="score-board">
+export const ScoreBoard = () => {
+  const { fishState } = useFishContext();
+  const { initialFishes, currentItem, correctCount, incorrectCount } = fishState;
+  const answersLeft = initialFishes.slice(currentItem).map((fish) => fish.name);
+  return(
+    <div id="score-board">
         <div>Incorrect 🔻: {incorrectCount}</div>
         <div id="choices-left">
           {answersLeft.map((answer) => (
@@ -13,4 +18,7 @@ export const ScoreBoard = ({ correctCount, answersLeft, incorrectCount }) => (
         </div>
         <div>Correct ✅: {correctCount}</div>
   </div>
-)
+  )
+}
+  
+

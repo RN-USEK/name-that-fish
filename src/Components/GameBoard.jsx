@@ -1,31 +1,23 @@
 import React, { useState } from "react";
 import "./styles/game-board.css";
+import { useFishContext } from '../context/FishContext';
 
-export const GameBoard = ({
-  correctCount,
-  updateCorrectCount,
-  incorrectCount,
-  updateIncorrectCount,
-  currentItem,
-  setCurrentItem,
-  currentFish,
-}) => {
+export const GameBoard = () => {
+  const { fishState, fishActions } = useFishContext();
+  const { initialFishes, currentItem } = fishState;
+  const { incrementProperty } = fishActions;
   const [guess, setGuess] = useState('');
 
   const handleInputChange = ({ target : {value} }) => {
     setGuess(value);
   }
-
+  const currentFish = initialFishes[currentItem];
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    if (guess === currentFish.name) {
-      updateCorrectCount(correctCount + 1);
-    } else {
-      updateIncorrectCount(incorrectCount + 1);
-    }
-
-    setCurrentItem (currentItem + 1);
+    guess === currentFish.name ? 
+      incrementProperty('correctCount',1) :
+      incrementProperty('incorrectCount',-1);
+    incrementProperty ('currentItem', 1);
     setGuess('');
   };
 

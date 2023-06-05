@@ -6,7 +6,6 @@ import { initialFishes as fishes } from '../context/FishContext';
 export const FinalScore = () => {
   const { fishState } = useFishContext();
   const { correctCount } = fishState;
- 
   return(
     <div id="final-score">
     <h1>Your Final Score Was</h1>

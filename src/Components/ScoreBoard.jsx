@@ -2,6 +2,7 @@ import React from "react";
 import "./styles/score-board.css";
 import { useFishContext } from '../context/FishContext';
 import { initialFishes as fishes } from '../context/FishContext';
+
 export const ScoreBoard = () => {
   const { fishState } = useFishContext();
   const { currentItem, correctCount, incorrectCount } = fishState;

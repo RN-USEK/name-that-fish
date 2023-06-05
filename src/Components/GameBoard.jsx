@@ -8,14 +8,15 @@ export const GameBoard = () => {
   const { currentItem } = fishState;
   const { setCorrectCount, setIncorrectCount, setCurrentItem } = fishSetters;
   const [guess, setGuess] = useState('');
+  const currentFish = fishes[currentItem];
 
   const handleInputChange = ({ target : {value} }) => {
     setGuess(value);
   }
-  const currentFish = fishes[currentItem];
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     guess === currentFish.name
     ? setCorrectCount(prevCount => prevCount + 1)
     : setIncorrectCount(prevCount => prevCount + 1);

@@ -4,14 +4,15 @@ import { GameBoard } from "./Components/GameBoard";
 import { ScoreBoard } from "./Components/ScoreBoard";
 import { FinalScore } from "./Components/FinalScore";
 import "./Components/styles/final-score.css";
-import {useFishContext} from './context/FishContext';
+import {initialFishes, useFishContext} from './context/FishContext';
+import { initialFishes as fishes } from './context/FishContext';
 
 function App() {
   const { fishState } = useFishContext();
-  const { isGameOver } = fishState;
+  const { currentItem } = fishState;
   return (
     <div>
-      {!isGameOver ? (
+      {!(currentItem === fishes.length) ? (
         <>
           <ScoreBoard />
           <GameBoard />

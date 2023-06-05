@@ -1,10 +1,11 @@
 import React from "react";
 import "./styles/final-score.css";
 import { useFishContext } from '../context/FishContext';
+import { initialFishes as fishes } from '../context/FishContext';
 
 export const FinalScore = () => {
   const { fishState } = useFishContext();
-  const { initialFishes,correctCount } = fishState;
+  const { correctCount } = fishState;
  
   return(
     <div id="final-score">
@@ -12,7 +13,7 @@ export const FinalScore = () => {
     <div id="score">
       <p>{correctCount}</p>
       <hr />
-      <p>{initialFishes.length}</p>
+      <p>{fishes.length}</p>
     </div>
   </div>
   )
